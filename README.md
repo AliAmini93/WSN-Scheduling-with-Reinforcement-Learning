@@ -32,8 +32,6 @@ The dynamic nature of `WSNEnvironment` allows for realistic simulation of sensor
 
 `WSNEnvironment` offers a robust and flexible platform for experimenting with and developing advanced scheduling strategies, particularly in the context of reinforcement learning.
 
-![WSNEnvironment](https://link.springer.com/article/10.1007/s41870-023-01514-1)
-
 ## Implemented Algorithms
 This project includes the implementation of several algorithms designed to optimize sensor energy consumption and improve state estimation within the WSN environment:
 - **Round Robin Scheduler:** A simple scheduler that systematically cycles through the available actions.
