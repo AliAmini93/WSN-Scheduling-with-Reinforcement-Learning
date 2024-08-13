@@ -1,4 +1,4 @@
-# Advanced Intelligent Scheduling in Wireless Sensor Networks Using Deep Q-Networks
+# Optimized Scheduling in Wireless Sensor Networks with DQN and Stable Baselines3
 
 **Project Overview:**
 This repository contains the code and resources for a comprehensive scheduling framework aimed at optimizing energy consumption and enhancing state estimation within a Wireless Sensor Network (WSN). The project leverages Reinforcement Learning, particularly the Deep Q-Network (DQN) algorithm, along with the Stable Baselines3 library, to address the intricate challenges of scheduling in WSNs.
