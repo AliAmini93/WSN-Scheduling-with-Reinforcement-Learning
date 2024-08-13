@@ -1,55 +1,52 @@
-# Optimized Scheduling Strategies in Wireless Sensor Networks
+# Advanced Intelligent Scheduling in Wireless Sensor Networks Using Deep Q-Networks
 
 **Project Overview:**
-This repository hosts the code and resources for an advanced scheduling framework designed to optimize energy consumption and improve state estimation accuracy within a Wireless Sensor Network (WSN). The project delves into the use of Reinforcement Learning, with a focus on the Deep Q-Networks (DQN) algorithm, to address the complex challenges of scheduling in WSNs.
+This repository contains the code and resources for a comprehensive scheduling framework aimed at optimizing energy consumption and enhancing state estimation within a Wireless Sensor Network (WSN). The project leverages Reinforcement Learning, particularly the Deep Q-Network (DQN) algorithm, along with the Stable Baselines3 library, to address the intricate challenges of scheduling in WSNs.
 
 **Core Concepts:**
-- **Reinforcement Learning:** This project harnesses the power of Reinforcement Learning to enable adaptive and intelligent scheduling within the sensor network.
-- **Deep Q-Networks (DQN):** DQN is utilized to approximate the optimal action-value function, facilitating informed decision-making within the network.
-- **Q-Learning:** A foundational concept in Reinforcement Learning, Q-Learning underpins the understanding and implementation of DQN in this project.
-- **Machine Learning:** Machine Learning principles are integrated to enhance the decision-making process in scheduling tasks.
-- **Gymnasium and Stable Baselines3:** These libraries are employed to build and simulate a custom environment for training and evaluating the scheduling strategies.
+- **Reinforcement Learning:** This project utilizes Reinforcement Learning to enable adaptive and intelligent scheduling within the WSN. The agent learns optimal scheduling strategies by interacting with the environment and receiving feedback in the form of rewards.
+- **Deep Q-Networks (DQN):** DQN is employed to approximate the optimal action-value function, which guides the agent in making informed decisions within the network.
+- **Stable Baselines3:** The project incorporates the Stable Baselines3 library, a powerful tool for developing and testing reinforcement learning algorithms, to train and evaluate the DQN model.
+- **Custom Gymnasium Environment:** A custom WSN environment, `WSNEnvironment`, is built using the Gymnasium library. This environment simulates realistic sensor deployment, event detection, and energy optimization scenarios, serving as a testing ground for the scheduling algorithms.
 
 # Environment Description
 
-## WSNEnvironment: A Tailored Gym Environment
+## WSNEnvironment: A Custom Reinforcement Learning Environment
 
-At the heart of this project lies 'WSNEnvironment,' a custom-built gym environment designed to simulate realistic scenarios within a WSN. This environment meticulously models sensor deployment, energy optimization, and event handling to align with the project's goals. Below is a detailed exploration of its key features and operations:
+At the core of this project is `WSNEnvironment`, a custom-designed Gymnasium environment tailored to simulate the dynamics of a Wireless Sensor Network. This environment plays a crucial role in training and evaluating the scheduling algorithms, particularly in reinforcement learning contexts. Below is a detailed breakdown of its key features:
 
 ### Observation and Action Spaces
-In Reinforcement Learning, the definition of observation and action spaces is critical. These spaces dictate what the agent perceives and the actions it can execute. In 'WSNEnvironment':
-- **Observation Space:** The observation space is structured as a matrix that maps the 2D positions of sensors within the network. Additionally, an innovative feature has been added—a third column that tracks the frequency of sensor selection during an episode. This allows the agent to evolve from random behavior to a more strategic approach, informed by the DQN model.
-- **Action Space:** The action space is directly tied to the number of sensors in the network. Each action corresponds to the selection of a specific sensor to retrieve data from its buffer.
+The design of observation and action spaces is fundamental in reinforcement learning as it dictates what the agent perceives and the actions it can take. In `WSNEnvironment`:
+- **Observation Space:** The observation space is a matrix representing the 2D positions of sensors in the network. A third column tracks the frequency of sensor selection during each episode, enabling the agent to evolve from random behavior to a more strategic approach based on the DQN model.
+- **Action Space:** The action space corresponds to the number of sensors in the network, with each action representing the selection of a specific sensor to retrieve data from its buffer.
 
 ### Environment Dynamics
-The essence of 'WSNEnvironment' lies in its dynamic simulation of a sensor network over time:
-- **Sensor Deployment:** The environment supports the creation of a customizable sensor network. The number of sensors (`num_sensors`) and their spatial arrangement are determined using a Poisson point distribution, ensuring diverse and random sensor placement.
-- **Coverage and Energy Optimization:** 'WSNEnvironment' simulates the efficient use of sensor energy while maintaining optimal coverage of the monitored area. Sensors operate within circular coverage zones, representing the regions where they can detect and capture events.
-- **Event Handling:** Events, which represent data to be captured, are generated probabilistically, based on a threshold probability (`threshold_prob`). If an event occurs, its location is randomly assigned within the monitored area. Sensors within the event’s coverage zone detect and log the event, simulating real-world event detection, and store it in their buffers.
+The dynamic nature of `WSNEnvironment` allows for realistic simulation of sensor network operations over time:
+- **Sensor Deployment:** The environment supports customizable sensor deployment, where the number of sensors (`num_sensors`) and their spatial distribution are generated using a Poisson point distribution to ensure randomness and diversity.
+- **Coverage and Energy Optimization:** Sensors operate within defined coverage areas, and the environment simulates the efficient use of sensor energy while maintaining optimal area coverage.
+- **Event Handling:** Events are generated probabilistically based on a threshold probability (`threshold_prob`). When an event occurs, its location is randomly assigned within the monitored area. Sensors within the event’s coverage zone detect and log the event, simulating real-world event detection, and store it in their buffers.
 
 ### Agent Interaction
-- **Step and Reset Functions:** The 'step' function models the agent's interaction with the environment, simulating sensor selection and event capture across multiple time steps. The 'reset' function reinitializes the environment at the beginning of each episode.
-- **Reward Function:** The reward mechanism has been significantly upgraded from its original design. Instead of a simplistic reward system, 'WSNEnvironment' now calculates rewards based on the Age of Information (AoI). Minimizing AoI is essential for optimizing the system's state estimation. The agent's reward is directly related to its success in reducing AoI, encouraging more strategic sensor selection.
+- **Step and Reset Functions:** The `step` function simulates the agent’s interaction with the environment, encompassing sensor selection and event capture across multiple time steps. The `reset` function reinitializes the environment at the start of each episode.
+- **Reward Function:** The reward mechanism is centered around minimizing the Age of Information (AoI), a critical factor for optimizing state estimation. The agent is rewarded based on its effectiveness in reducing AoI, encouraging strategic sensor selection.
 
-'WSNEnvironment' provides a versatile and comprehensive platform for testing and developing advanced scheduling strategies, enabling exploration and innovation in the field of sensor network optimization through reinforcement learning.
+`WSNEnvironment` offers a robust and flexible platform for experimenting with and developing advanced scheduling strategies, particularly in the context of reinforcement learning.
 
-![WSNEnvironment](https://github.com/fareskhlifi/Intelligent-Scheduling-using-Reinforcement-learning-and-Deep-Q-Networks/blob/main/WSN.png?raw=true)
+![WSNEnvironment](https://link.springer.com/article/10.1007/s41870-023-01514-1)
 
 ## Implemented Algorithms
-This project features the implementation of five distinct algorithms aimed at optimizing sensor energy consumption and enhancing state estimation in a WSN environment:
-- **Round Robin Scheduler:** A scheduler that systematically cycles through available actions.
-- **Random Scheduler:** A scheduler that selects actions randomly from the available action space.
-- **Q-learning Model:** A traditional Q-learning approach for action selection and reward maximization.
-- **Deep Q-Network Model:** An advanced extension of Q-learning utilizing deep neural networks for more sophisticated decision-making.
-- **Stable Baselines3 Model:** A reinforcement learning model leveraging the Stable Baselines3 library for training and performance evaluation.
-
-The main focus of this project is on the Deep Q-Network Model, which offers advanced capabilities for optimizing sensor energy and improving system state estimation. The other algorithms are implemented as baselines for comparison.
+This project includes the implementation of several algorithms designed to optimize sensor energy consumption and improve state estimation within the WSN environment:
+- **Round Robin Scheduler:** A simple scheduler that systematically cycles through the available actions.
+- **Random Scheduler:** A baseline scheduler that selects actions randomly from the available action space.
+- **Q-Learning Model:** A traditional reinforcement learning approach that selects actions based on learned Q-values.
+- **Deep Q-Network Model (DQN):** A more advanced model that uses deep neural networks to make complex scheduling decisions. This model is the primary focus of the project.
+- **Stable Baselines3 DQN Model:** An implementation of the DQN model using the Stable Baselines3 library, providing a robust and scalable approach to training and evaluation.
 
 ## Algorithm Comparison and Data Analytics
 
-For a detailed examination of the implementation and performance of each algorithm, including comparisons and data analysis, please refer to the Jupyter notebooks included in this repository. The project provides extensive data analytics, such as:
+The repository provides detailed analyses of the performance of each algorithm, including:
+- **Average Reward Comparisons:** Evaluating the average rewards obtained by different schedulers over multiple episodes.
+- **Boxplot Analysis:** Visualizing the distribution of rewards across different scheduling strategies.
+- **Latency Analysis:** Assessing the time latency of captured events to evaluate the efficiency of each scheduler.
 
-- Average reward comparisons
-- Boxplots for reward distribution
-- Latency analysis
-
+These analyses are documented in the Jupyter notebooks included in this repository, offering insights into the relative performance of each scheduling strategy.
