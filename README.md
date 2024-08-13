@@ -1,5 +1,4 @@
 # Optimized Scheduling Strategies in Wireless Sensor Networks
-# Advanced Scheduling Strategies in Wireless Sensor Networks
 
 **Project Overview:**
 This repository hosts the code and resources for an advanced scheduling framework designed to optimize energy consumption and improve state estimation accuracy within a Wireless Sensor Network (WSN). The project delves into the use of Reinforcement Learning, with a focus on the Deep Q-Networks (DQN) algorithm, to address the complex challenges of scheduling in WSNs.
